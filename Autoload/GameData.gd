@@ -1,6 +1,7 @@
 extends Node
 # GameData
 const VK_PLAY_VERSION: bool = false
+const YANDEX_GAME_VERSION: bool = true
 
 var current_level: Dictionary
 var current_track: Level_0
@@ -8,6 +9,16 @@ var current_track: Level_0
 var track_cfg: TrackCfg = load(PathData.TRACK_MODEL).new()
 var level_cfg: LevelCfg = load(PathData.LEVEL_MODEL).new()
 var player_track_cfg: PlayerTrackCfg = load(PathData.PLAYER_TRACK_MODEL).new()
+
+var window := JavaScript.get_interface("window")
+var init_SDK_callback = JavaScript.create_callback(self, "init_SDK")
+var player_info = {
+	"name": "",
+	"is_authenticated": false,
+	"hi_score": 0
+}
+var is_authenticated := false
+
 
 
 func _ready():
@@ -31,6 +42,8 @@ func _ready():
 					if track_cfg.get_state(section) != LevelTrackStates.PASSED:
 						break
 
+	ready_YaSDK()
+
 
 func reload_game(track_id: int):
 	var track_section = track_cfg.get_section(track_id) 
@@ -43,10 +56,37 @@ func reload_game(track_id: int):
 		current_level = level_cfg.as_dict(level_section)
 
 
-
 func showAdsBtnVKPlay():
 	if not VK_PLAY_VERSION:
 		return
 	if OS.get_name() == 'HTML5' and OS.has_feature('JavaScript'):
 		JavaScript.eval("document.getElementById('showAdsBtn').click();")
 	
+# YSDK
+
+func ready_YaSDK():
+	if not YANDEX_GAME_VERSION:
+		return
+		
+	if window:
+		print("GD: Initializing SDK")
+		window.initSDK(init_SDK_callback)
+
+
+func init_SDK(args):
+	print('GD: init_SDK', args)
+
+
+func showAdsBtnYaGame():
+	if not YANDEX_GAME_VERSION:
+		return
+	if OS.get_name() == 'HTML5' and OS.has_feature('JavaScript'):
+		JavaScript.eval("document.getElementById('showAdsBtn').click();")
+
+	
+
+func update_player_score(score: int):
+	if is_authenticated and score > player_info.hi_score:
+		print("updating score")
+		player_info.hi_score = score
+		window.updatePlayerScore(score)

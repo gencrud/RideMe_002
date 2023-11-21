@@ -14,5 +14,5 @@ func _physics_process(delta: float) -> void:
 	
 	
 func set_progress_player():
-	_label_value.text = '%.2f' % player.power
+	_label_value.text = '%.2f' % abs(player.power)
 	_progress.value = player.power

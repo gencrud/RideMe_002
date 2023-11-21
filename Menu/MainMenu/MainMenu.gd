@@ -26,10 +26,11 @@ func _ready() -> void:
 		btn_play.type = "Run"
 		btn_play.anim_flicker()
 
-	btn_play.hint_tooltip = "Play the %s level track on %s bike" % [
-		GameData.current_level.title if GameData.current_level else "no",
-		PlayerData.player_bike.title if PlayerData.player_bike else "no",
-	]
+	#btn_play.hint_tooltip = "Play the %s level track on %s bike" % [
+	#	GameData.current_level.title if GameData.current_level else "no",
+	#	PlayerData.player_bike.title if PlayerData.player_bike else "no",
+	#]
+	
 
 	if not PlayerData.player_bike:
 		btn_bike_menu.anim_flicker()
@@ -60,13 +61,15 @@ func field_log_start_play() -> void:
 	field_log.clear()
 	
 	if not PlayerData.player_bike:
-		field_log.error("No bike selected! You don't have a bike")
+		
+		
+		field_log.error(TranslationServer.translate('KEY_You_have_not_bike'))
 	elif not GameData.current_level:
-		field_log.error("No level selected! You don't have the current level")
+		field_log.error(TranslationServer.translate("KEY_You_have_not_level"))
 	elif not GameData.current_track:
-		field_log.error("No track selected! You don't have the current track")
+		field_log.error(TranslationServer.translate("KEY_You_have_not_initial_track"))
 	else:
-		var error = "Undefined error. You can not start play. Try ro reboot game"
+		var error = TranslationServer.translate("KEY_Unspecified_error_restarting_game")
 		field_log.error(error)
 
 

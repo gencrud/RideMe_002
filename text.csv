@@ -64,8 +64,7 @@ KEY_LEVEL_ISSUE_1,Heat. Collect the %s hourgrass to see the finish,"Жара. С
 KEY_LEVEL_ISSUE_2,Around people! Don't run into them and collect the %s hourgrass,"Вокруг люди! Не сталкивайтесь с ними 
 И соберите %s песочных часов"
 KEY_LEVEL_ISSUE_3,Night road. Collect the %s hourgrass as soon as possible,Ночная дорога. Соберите %s песочных часов как можно скорее
-KEY_LEVEL_ISSUE_4,City dogs. Collect %s hourglasses as quickly as possible,"Городские собаки. Соберите %s песочных часов 
-Как можно быстрее, чтобы добраться до финиша"
+KEY_LEVEL_ISSUE_4,City dogs. Collect %s hourglasses as quickly as possible,"Городские собаки. Соберите %s песочных часов как можно быстрее, чтобы добраться до финиша"
 KEY_LEVEL_ISSUE_5,"Game children's road. Collect %s hourglasses. 
 Time is limited!","Переполненная дорога. Соберите %s песочных часов. 
 Время ограничено!"
@@ -84,12 +83,13 @@ KEY_Need_Rms,Need to more Rms!,Нужно больше RM'ок!
 KEY_Bike_paid_success,Bike was paid success,Байк успешно оплачен
 KEY_Bike_not_selected,A bike was not selected,Байк не выбран
 KEY_You have_bike_already,You have a bike already,У вас уже есть байк
-KEY_You have_not_bike,You have not a bike,У вас нет байка
+KEY_You_have_not_bike,You have not a bike,У вас нет байка
 KEY_Power_limit_reached,Power limit reached,Достигнут силовой предел
 KEY_Speed_limit_reached,Speed limit reached,Достигнут скоростной предел
 KEY_Jump_limit_reached,Jump limit reached,Достигнут предел прыжка
-KEY_Bike_parameters_upgraded_successful,Bike's parameters was upgraded successful,Параметры велосипеда успешно обновлены
+KEY_Bike_parameters_upgraded_successful,Bike was paid success!,Параметры велосипеда успешно обновлены
 KEY_You_have_not_level,You have not a level,Уровень не выбран
 KEY_You_have_not_initial_track,You have not an initial track,Трек для прохождение не выбран
 KEY_You_have_already_paid_track,You have already paid for this track %s,Этот трек уже оплачен - %s
 KEY_passed,%s passed,%s пройден
+KEY_Unspecified_error_restarting_game,Unspecified error. You cannot start the game. Try restarting the game,Неопределенная ошибка. Вы не можете начать игру. Попробуйте перезагрузить игру

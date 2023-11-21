@@ -16,7 +16,6 @@ func _ready():
 
 
 func _on_btn_yes_pressed():
-	print('PRESSED 0')
 	._on_btn_yes_pressed()
 	
 	if has_node("/root/LevelMenu") and not GameData.current_level.empty() and GameData.current_track:
@@ -79,7 +78,7 @@ func set_title(track: Node2D) -> void:
 	.set_title(track)
 	
 	if not GameData.current_level.passed_at.empty():
-		$Nine/Title.set_text("%s passed!" % [track.title])
+		$Nine/Title.set_text(TranslationServer.translate("KEY_passed") % [track.title])
 		$Nine/Title.modulate = Color(0.1, 0.5, 0.1) # GREEN
 		
 		$Completed.visible = true

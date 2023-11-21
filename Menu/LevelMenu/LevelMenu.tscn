@@ -76,13 +76,11 @@ __meta__ = {
 }
 
 [node name="Level_1" parent="TextureRect/SliderContainer/Buttons" instance=ExtResource( 8 )]
-hint_tooltip = "Level 1"
 text = "KEY_Mountains"
 
 [node name="Level_2" parent="TextureRect/SliderContainer/Buttons" instance=ExtResource( 8 )]
 margin_left = 260.0
 margin_right = 480.0
-hint_tooltip = "Level 2"
 text = "KEY_City"
 
 [node name="Detail" type="HBoxContainer" parent="TextureRect/SliderContainer"]
@@ -193,7 +191,6 @@ anchor_bottom = 0.0
 margin_left = 440.0
 margin_right = 840.0
 margin_bottom = 76.0
-hint_tooltip = "Progress button"
 expand = false
 title = "KEY_Tracks"
 icon = ExtResource( 10 )

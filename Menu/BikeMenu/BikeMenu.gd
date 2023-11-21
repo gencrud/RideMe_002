@@ -44,7 +44,7 @@ func _on_btn_pay_pressed() -> void:
 	if not PlayerData.player_bike:
 		if selected_node and selected_node.price > 0:
 			if PlayerData.rms < selected_node.price:
-				field_log.error("Need to more Rms!")
+				field_log.error(TranslationServer.translate("KEY_Need_Rms"))
 			else:
 				PlayerData.player_bike_cfg.set_bike_title(selected_node.title)
 				PlayerData.player_bike_cfg.set_max_speed(selected_node.max_speed)
@@ -59,17 +59,17 @@ func _on_btn_pay_pressed() -> void:
 				
 				btn_pay.type = "Buy"
 
-				field_log.success("Bike was paid success!")
+				field_log.success(TranslationServer.translate("KEY_Bike_paid_success"))
 				
 				yield(get_tree().create_timer(0.4), "timeout")
 				var res := get_tree().reload_current_scene()
 				if res != OK:
 					printerr("ERROR: " + str(self) + " " + str(res) + "_on_btn_pay_pressed and reload_current_scene")
 		else:
-			var message = "A bike was not selected!"
+			var message = TranslationServer.translate("KEY_Bike_not_selected")
 			field_log.error(message)
 	else:
-		var message = "You have a bike already!"
+		var message = TranslationServer.translate("KEY_You have_bike_already")
 		field_log.info(message)
 	
 	if PlayerData.player_bike:
@@ -90,7 +90,7 @@ func _on_btn_refit_pressed() -> void:
 		if has_node(bike_upgrade_name) and get_node(bike_upgrade_name):
 			bike_upgrade_instance.open(PlayerData.player_bike)
 	else:
-		var message = "You have not a bike!"
+		var message = TranslationServer.translate("KEY_You_have_not_bike")
 		field_log.error(message)
 
 

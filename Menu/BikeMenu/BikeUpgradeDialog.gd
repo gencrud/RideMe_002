@@ -35,12 +35,12 @@ func _ready():
 	
 	if PlayerData.rms < 2:
 		grid.modulate.a = 0.5
-		field_log.error("Need to more Rms!")
+		field_log.error(TranslationServer.translate("KEY_Need_Rms"))
 
 
 func _on_btn_power_add_pressed() -> void:
 	if LIMIT_POWER_PRICE <= PlayerData.player_bike.max_power + power_added_rms:
-		field_log.error_audio("Power limit reached!", $AudioStreamPlayer2D, audio_btn_error)
+		field_log.error_audio(TranslationServer.translate("KEY_Power_limit_reached"), $AudioStreamPlayer2D, audio_btn_error)
 		return
 		
 	if on_btn_added(POWER_PRICE):
@@ -65,7 +65,7 @@ func _on_btn_power_del_released() -> void:
 
 func _on_btn_speed_add_pressed() -> void:
 	if LIMIT_SPEED_PRICE <= PlayerData.player_bike.max_speed + speed_added_rms:
-		field_log.error_audio("Speed limit reached!", $AudioStreamPlayer2D, audio_btn_error)
+		field_log.error_audio(TranslationServer.translate("KEY_Speed_limit_reached"), $AudioStreamPlayer2D, audio_btn_error)
 		return
 		
 	if on_btn_added(SPEED_PRICE):
@@ -90,7 +90,7 @@ func _on_btn_speed_del_released() -> void:
 
 func _on_btn_jump_add_pressed() -> void:
 	if LIMIT_JUMP_PRICE <= PlayerData.player_bike.max_height_jump + jump_added_rms:
-		field_log.error_audio("Jump limit reached!", $AudioStreamPlayer2D, audio_btn_error)
+		field_log.error_audio(TranslationServer.translate("KEY_Jump_limit_reached"), $AudioStreamPlayer2D, audio_btn_error)
 		return
 		
 	if on_btn_added(JUMP_PRICE):
@@ -136,7 +136,7 @@ func _on_btn_yes_pressed():
 	if is_visible(): 
 		# Upgrade bike's parameters
 		if PlayerData.rms < selected_rms: 
-			field_log.error("Need to more Rms!")
+			field_log.error(TranslationServer.translate("KEY_Need_Rms"))
 			$AudioStreamPlayer2D.set_stream(audio_btn_error)
 			
 		elif selected_rms > 0:
@@ -148,7 +148,7 @@ func _on_btn_yes_pressed():
 				jump_value, jump_added_rms
 			)
 			
-			field_log.success("Bike's parameters was upgraded successful!")
+			field_log.success(TranslationServer.translate("KEY_Bike_parameters_upgraded_successful"))
 			$AudioStreamPlayer2D.set_stream(audio_btn_pay)
 		
 		$AudioStreamPlayer2D.play()
@@ -180,14 +180,14 @@ func on_btn_added(price) -> bool:
 	field_log.clear()
 	grid.modulate.a = 0.5
 	
-	if PlayerData.rms > selected_rms + price:
+	if PlayerData.rms >= selected_rms + price:
 		selected_rms += price
 		# set_rm_counter()
 		$AudioStreamPlayer2D.set_stream(audio_btn_pressed)
 		$AudioStreamPlayer2D.play()
 		return true
 	else:
-		field_log.error_audio("Have not enough the Rms!", $AudioStreamPlayer2D, audio_btn_error)
+		field_log.error_audio(TranslationServer.translate("KEY_Need_Rms"), $AudioStreamPlayer2D, audio_btn_error)
 		return false
 		
 

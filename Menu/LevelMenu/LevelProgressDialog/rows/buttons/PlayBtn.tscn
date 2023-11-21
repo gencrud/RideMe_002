@@ -14,7 +14,6 @@ margin_left = 1010.0
 margin_right = 1150.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 140, 46 )
-hint_tooltip = "Replay this track again. The best result will be keep!"
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true

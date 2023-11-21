@@ -40,9 +40,6 @@ margin_bottom = 46.0
 rect_min_size = Vector2( 0, 46 )
 alignment = 1
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icon" type="TextureButton" parent="."]
 margin_left = 62.0
@@ -104,7 +101,6 @@ margin_right = 1150.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 140, 46 )
 rect_pivot_offset = Vector2( -914.436, -124.112 )
-hint_tooltip = "Replay this track again. The best result will be keep!"
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
