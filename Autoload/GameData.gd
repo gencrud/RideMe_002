@@ -1,7 +1,8 @@
 extends Node
 # GameData
 const VK_PLAY_VERSION: bool = false
-const YANDEX_GAME_VERSION: bool = true
+const YANDEX_GAME_VERSION: bool = false
+const PLAYDECK_VERSION: bool = true
 
 var current_level: Dictionary
 var current_track: Level_0
@@ -18,7 +19,6 @@ var player_info = {
 	"hi_score": 0
 }
 var is_authenticated := false
-
 
 
 func _ready():
@@ -90,3 +90,68 @@ func update_player_score(score: int):
 		print("updating score")
 		player_info.hi_score = score
 		window.updatePlayerScore(score)
+
+
+"""
+<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+
+ EXAMPLE CUSTOM HTML FOR YS
+<!-- Extra CSS -->
+<style type='text/css'>
+	#canvas {
+		height: 90vh !important;
+	}
+	 
+	body {
+  		overflow: hidden;
+	}
+
+</style>
+<!-- end Extra Css -->
+<script src="https://yandex.ru/games/sdk/v2"></script>
+<script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+
+<script>
+	var ysdk;
+	var player;
+
+	function initSDK(callback) {
+		console.log('JS: initSDK');
+
+		YaGames.init({
+			app: {id: '221438'}
+		}).then(_ysdk => {
+			ysdk = _ysdk;	
+			ysdk.features.LoadingAPI?.ready(); // Показываем SDK, что игра загрузилась и можно начинать играть
+			
+			console.log('ysdk: ', ysdk);
+
+			ysdk.adv.showFullscreenAdv();
+			document.querySelector('#showAdsBtn').addEventListener('click', (e) => {
+				// e.preventDefault();
+				
+				let counter = 0;
+				function getCallback(callbackName) {
+					return () => {
+						counter += 1;
+						console.log(`showFullscreenAdv; callback ${callbackName}; ${counter} call`);
+					}
+				}
+
+				ysdk.adv.showFullscreenAdv({
+					callbacks: {
+						onClose: getCallback('onClose'),
+						onOpen: getCallback('onOpen'),
+						onError: getCallback('onError'),
+						onOffline: getCallback('onOffline')
+					}
+				});
+			});
+
+		})
+		.catch(console.error);
+}
+</script>
+
+"""
